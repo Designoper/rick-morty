@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'Mukta';
+    src: url('/fonts/mukta-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Mukta';
+    src: url('/fonts/mukta-bold.woff2') format('woff2');
+    font-weight: bold;
+}
+
+:is(*, *::before, *::after) {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --first-color: rgb(26, 26, 26);
+    --second-color: rgb(243, 148, 148);
+    --third-color: rgb(250, 69, 69);
+    --fourth-color: #000000;
+    --fifth-color: #ffffff;
+}
+
+body:has(details[open]) {
+    --first-color: rgb(255, 255, 255);
+    --second-color: rgb(26, 26, 26);
+    --third-color: rgb(96, 69, 250);
+    --fourth-color: #ffffff;
+    --fifth-color: #4d3c3c;
+}
+
+body {
+    font: calc(1*16*100/360*1vw)/1.35 "Mukta", sans-serif;
+    color: var(--first-color);
+    background-color: var(--second-color);
+}
+
+main {
+    padding: 3em 10vw 4em;
+}
+
+div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+article {
+    width: 100%;
+    border-radius: 1em;
+    background-color: var(--third-color);
+    overflow: hidden;
+}
+
+ul {
+    padding: 1em;
+    background-color: var(--fifth-color);
+    list-style-type: none;
+}
+
+:is(h1, h2) {
+    font-weight: bold;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--fourth-color);
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    background-color: var(--fifth-color);
+}
+
+li {
+    text-wrap: balance;
+    color: var(--fourth-color);
+}
+
+img {
+    display: block;
+    width: 60%;
+    height: auto;
+    border-radius: 50%;
+    margin: 1em auto;
+}
+
+details {
+    width: 1em;
+}
+
+svg {
+    fill-rule: evenodd;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 1.5;
+    cursor: pointer;
+}
+
+path:nth-of-type(1) {
+    fill: var(--fourth-color);
+}
+
+path:nth-of-type(2) {
+    fill: var(--fifth-color);
+}
+
+circle {
+    fill: none;
+    stroke: var(--fourth-color);
+    stroke-width: 110.04;
+}
+
+summary::marker,
+summary::-webkit-details-marker {
+    display: none;
+    content: "";
+}
+
+button {
+    font-family: 'Mukta';
+    font-size: 1em;
+    display: block;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    color: #000000;
+    background-color: #fff6f6;
+    margin: 2em auto 0;
+}

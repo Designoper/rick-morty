@@ -59,7 +59,7 @@ function nextPage(param) {
 
 function prova() {
 
-	const input = `${baseUrl}?name=${document.getElementById('input').value}`;
+	const input = `${characterUrl}?name=${document.getElementById('input').value}`;
 	fetch(input)
 
 		.then(response => {
