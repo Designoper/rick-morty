@@ -1,5 +1,6 @@
-(function loadData() {
-	fetch('https://rickandmortyapi.com/api/character/')
+function loadData(url) {
+
+	fetch(url)
 
 		.then(response => {
 			if (!response.ok) {
@@ -17,7 +18,7 @@
 					type = `<li><strong>Type:</strong> ${character.type}</li>`;
 				}
 				content +=
-				`<article>
+					`<article>
 					<h2>${character.name}</h2>
 					<img src="${character.image}" alt="Character ${character.name}">
 					<ul>
@@ -30,11 +31,37 @@
 					</ul>
 				</article>`;
 			});
-			document.getElementById('characters').innerHTML = content;
+			document.getElementById('characters').innerHTML += content;
+			// document.querySelector('button').onclick = function () {
+			// 	loadData(data.info.next);
+			// }
+			nextPage(data.info.next);
+
 		})
 
-		.catch(__error => {
-			// console.error('Error:', error);
-			document.getElementById('characters').innerHTML = "We're sorry, there's been an error on our side";
+		.catch(error => {
+			console.error('Error:', error);
+			// document.getElementById('characters').innerHTML += "We're sorry, there's been an error on our side";
 		});
-})();
+};
+
+window.onload = loadData('https://rickandmortyapi.com/api/character/');
+// document.querySelector("button").addEventListener('click', function () {
+// 	loadData('https://rickandmortyapi.com/api/character/');
+// });
+
+function nextPage(param) {
+	document.querySelector('button').onclick = function () {
+		loadData(param);
+	}
+}
+
+// window.onscroll = function() {
+//     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+//         // Cargar más datos
+//         loadData('url').then(next => {
+//             // Usar la variable next
+//             console.log(next);
+//         });
+//     }
+// };
