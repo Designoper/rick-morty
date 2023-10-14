@@ -1,14 +1,13 @@
 const characterEndpoint = `https://rickandmortyapi.com/api/character/`;
-const queryurl = `?name=`;
+const queryParameter = `?name=`;
 const nextPageButton = document.querySelector('#next-page');
 const apiContent = document.querySelector('#characters');
-const errorBox = document.querySelector('#error');
-// const search = document.querySelector('input').value;
+const errorMessage = document.querySelector('#error');
+const userInput = document.querySelector('#input');
 
+function loadData(request) {
 
-function loadData(url) {
-
-	fetch(`${url}`)
+	fetch(`${request}`)
 
 		.then(response => {
 			if (!response.ok) {
@@ -22,10 +21,8 @@ function loadData(url) {
 			const characters = data.results;
 			let content = '';
 			characters.forEach(character => {
-				let type = '';
-				if (character.type !== "") {
-					type = `<li><strong>Type:</strong> ${character.type}</li>`;
-				}
+				let type;
+				character.type === '' ? type = '' : type = `<li><strong>Type:</strong> ${character.type}</li>`;
 				content +=
 					`<article>
 						<h2>${character.name}</h2>
@@ -52,8 +49,8 @@ function loadData(url) {
 
 window.onload = loadData(characterEndpoint);
 
-function nextPage(url) {
-	nextPageButton.onclick = () => url === null ? errorBox.innerHTML = 'No more characters' : loadData(url);
+function nextPage(request) {
+	nextPageButton.onclick = () => request === null ? errorMessage.innerHTML = 'No more characters' : loadData(request);
 }
 
 
@@ -62,17 +59,17 @@ function nextPage(url) {
 
 function searchUpdate() {
 
-	const input = `${characterEndpoint}${queryurl}${document.getElementById('input').value}`;
-	fetch(input)
+	const request = `${characterEndpoint}${queryParameter}${userInput.value}`;
+	fetch(request)
 
 		.then(response => {
 			if (!response.ok) {
-				document.getElementById('characters').innerHTML = '';
-				errorBox.innerHTML = 'No results found';
+				apiContent.innerHTML = '';
+				errorMessage.innerHTML = 'No results found';
 				nextPageButton.style.visibility = 'hidden';
 			}
 			else {
-				document.getElementById('error').innerHTML = '';
+				errorMessage.innerHTML = '';
 				nextPageButton.style.visibility = 'visible';
 			}
 			return response.json();
@@ -82,10 +79,8 @@ function searchUpdate() {
 			const characters = data.results;
 			let content = '';
 			characters.forEach(character => {
-				let type = '';
-				if (character.type !== "") {
-					type = `<li><strong>Type:</strong> ${character.type}</li>`;
-				}
+				let type;
+				character.type === '' ? type = '' : type = `<li><strong>Type:</strong> ${character.type}</li>`;
 				content +=
 					`<article>
 						<h2>${character.name}</h2>
@@ -110,4 +105,4 @@ function searchUpdate() {
 		});
 }
 
-document.getElementById('input').oninput = searchUpdate;
+userInput.oninput = searchUpdate;
