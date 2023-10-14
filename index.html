@@ -1,26 +1,58 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="en">
 
 <head>
 
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Personatges Rick i Morty</title>
-    <meta name="description" content="">
+	<title>Rick and Morty</title>
+	<meta name="description" content="A cool website to consult the characters from the Rick and Morty show.">
 
+	<link href="https://rickandmortyapi.com" rel="preconnect">
+
+	<link href="/fonts/mukta-regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+	<link href="/fonts/mukta-bold.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
 	<link href="/css/index.css" rel="preload stylesheet" as="style">
-	<script src="/js/fetch.js" defer></script>
+	<script src="/fetch.js" defer></script>
 
 </head>
 
 <body>
 
+	<noscript>
+		<link href="css/noscript.css" rel="stylesheet">
+		<dialog open>The core functionality of this website requires javascript, which is not enabled in your browser. Please make sure you have javascript activated and refresh the page.</dialog>
+	</noscript>
+
 	<main>
 
-		<h1>Personatges de Rick i Morty</h1>
+		<h1>Rick and Morty</h1>
 
-		<ul id="characters"></ul>
+		<!-- <details>
+			<summary aria-label="dark mode">
+				<svg viewBox="0 0 1680 1680">
+					<g>
+						<path d="M834.929 55.25c432.525 0 783.684 351.158 783.684 783.683s-351.159 783.68-783.684 783.68c-.479 0-.479-1567.36 0-1567.36z"/>
+						<path d="M837.196 1622.61c-432.525 0-783.679-351.155-783.679-783.68S404.671 55.247 837.196 55.247c.483 0 .483 1567.36 0 1567.36z"/>
+						<circle cx="837.558" cy="838.933" r="781.054"/>
+					</g>
+				</svg>
+			</summary>
+		</details> -->
+
+
+
+		<form accept-charset="utf-8">
+			<label for="input">Search character</label>
+			<input id="input" autofocus>
+		</form>
+
+		<div id="characters"></div>
+
+		<p id="error"></p>
+
+		<button type="button" id="next-page">Show more</button>
 
 	</main>
 
