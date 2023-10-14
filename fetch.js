@@ -1,7 +1,9 @@
-const characterUrl = `https://rickandmortyapi.com/api/character/`;
-const nextPageButton = document.querySelector('button');
+const characterEndpoint = `https://rickandmortyapi.com/api/character/`;
+const nextPageButton = document.querySelector('#next-page');
+const apiContent = document.querySelector('#characters');
+const errorBox = document.querySelector('#error');
 // const search = document.querySelector('input').value;
-// const query = `?name=${search}`;
+const queryurl = `?name=`;
 
 function loadData(url) {
 
@@ -9,9 +11,9 @@ function loadData(url) {
 
 		.then(response => {
 			if (!response.ok) {
-				document.getElementById('error').innerHTML = 'no more characters';
 				throw new Error("Error HTTP: " + response.status);
 			}
+			// document.getElementById('error').innerHTML = 'no  characters';
 			return response.json();
 		})
 
@@ -37,7 +39,7 @@ function loadData(url) {
 						</ul>
 					</article>`;
 			});
-			document.getElementById('characters').innerHTML += content;
+			apiContent.innerHTML += content;
 			nextPage(data.info.next);
 		})
 
@@ -47,11 +49,11 @@ function loadData(url) {
 		});
 };
 
-window.onload = loadData(characterUrl);
+window.onload = loadData(characterEndpoint);
 
 function nextPage(url) {
 	nextPageButton.onclick = function () {
-		loadData(url);
+		url === null ? errorBox.innerHTML = 'No more characters' : loadData(url);
 	}
 }
 
@@ -59,14 +61,20 @@ function nextPage(url) {
 
 
 
-function prova() {
+function searchUpdate() {
 
-	const input = `${characterUrl}?name=${document.getElementById('input').value}`;
+	const input = `${characterEndpoint}${queryurl}${document.getElementById('input').value}`;
 	fetch(input)
 
 		.then(response => {
 			if (!response.ok) {
-				document.getElementById('characters').innerHTML = 'Sorry, no results found';
+				document.getElementById('characters').innerHTML = '';
+				errorBox.innerHTML = 'No results found';
+				nextPageButton.style.visibility = 'hidden';
+			}
+			else {
+				document.getElementById('error').innerHTML = '';
+				nextPageButton.style.visibility = 'visible';
 			}
 			return response.json();
 		})
@@ -93,7 +101,7 @@ function prova() {
 						</ul>
 					</article>`;
 			});
-			document.getElementById('characters').innerHTML = content;
+			apiContent.innerHTML = content;
 			nextPage(data.info.next);
 		})
 
@@ -102,9 +110,5 @@ function prova() {
 			// document.getElementById('characters').innerHTML += "We're sorry, there's been an error on our side";
 		});
 }
-document.getElementById('input').oninput = prova;
 
-// }
-
-// const input = document.getElementById('input').innerHTML;
-// document.getElementById('input').addEventListener('input', loadData(input));
+document.getElementById('input').oninput = searchUpdate;
