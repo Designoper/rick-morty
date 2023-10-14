@@ -1,9 +1,10 @@
 const characterEndpoint = `https://rickandmortyapi.com/api/character/`;
+const queryurl = `?name=`;
 const nextPageButton = document.querySelector('#next-page');
 const apiContent = document.querySelector('#characters');
 const errorBox = document.querySelector('#error');
 // const search = document.querySelector('input').value;
-const queryurl = `?name=`;
+
 
 function loadData(url) {
 
@@ -52,9 +53,7 @@ function loadData(url) {
 window.onload = loadData(characterEndpoint);
 
 function nextPage(url) {
-	nextPageButton.onclick = function () {
-		url === null ? errorBox.innerHTML = 'No more characters' : loadData(url);
-	}
+	nextPageButton.onclick = () => url === null ? errorBox.innerHTML = 'No more characters' : loadData(url);
 }
 
 
