@@ -4,13 +4,9 @@ const apiContent = document.querySelector('#characters');
 const errorMessage = document.querySelector('#error');
 const userInput = document.querySelector('#input');
 
-const loadCharacters = (endpoint, __param) => {
+const loadCharacters = ((__param = '') => {
 
-	if (__param === undefined) {
-		__param = '';
-	}
-	const request = `${endpoint}${__param}`;
-
+	const request = `https://rickandmortyapi.com/api/character/?name=}${__param}`;
 	fetch(request)
 
 		.then(response => {
@@ -22,7 +18,6 @@ const loadCharacters = (endpoint, __param) => {
 		.then(data => {
 			const characters = data.results;
 			let content = '';
-
 			characters.forEach(character => {
 				content +=
 					`<article>
@@ -38,11 +33,7 @@ const loadCharacters = (endpoint, __param) => {
 						</ul>
 					</article>`;
 			});
-			switch (__param) {
-				case (''): apiContent.innerHTML += content;
-					break;
-				default: apiContent.innerHTML = content;
-			}
+			apiContent.innerHTML = (__param === '' ? apiContent.innerHTML + content : content);
 			nextPageButton.onclick = () => data.info.next === null ? errorMessage.innerHTML = 'No more characters' : loadCharacters(data.info.next);
 		})
 
@@ -52,8 +43,7 @@ const loadCharacters = (endpoint, __param) => {
 			errorMessage.innerHTML = 'No results found';
 			nextPageButton.style.visibility = 'hidden';
 		});
-};
+})();
 
-window.onload = loadCharacters(characterEndpoint);
-
+loadCharacters(characterEndpoint);
 userInput.oninput = () => loadCharacters(characterEndpoint, userInput.value);
