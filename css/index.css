@@ -36,18 +36,43 @@ body:has(details[open]) {
 
 body {
     font: calc(1*16*100/360*1vw)/1.35 "Mukta", sans-serif;
-    color: var(--first-color);
-    background-color: var(--second-color);
+
 }
 
 main {
     padding: 3em 10vw 4em;
+    color: var(--first-color);
+    background-color: var(--second-color);
 }
 
 div {
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 3em;
+}
+
+form {
+    display: flex;
+    /* width: 100%; */
+    /* display: flex;
+    justify-content: space-between; */
+    /* display: inline;
+    flex-wrap: nowrap;
+    gap: 1em; */
+    margin-bottom: 2em;
+}
+
+label {
+    /* width: 40%; */
+    /* width: fit-content; */
+    /* display: inline; */
+}
+
+input {
+    /* display: inline; */
+    border-radius: 1em;
+    width: auto;
+    height: auto;
 }
 
 article {
@@ -72,10 +97,12 @@ ul {
 
 h1 {
     font-size: 2em;
+    margin-bottom: 1em;
 }
 
 h2 {
     font-size: 1.5em;
+    padding: 0.25em 0;
     background-color: var(--fifth-color);
 }
 
@@ -134,3 +161,20 @@ button {
     background-color: #fff6f6;
     margin: 2em auto 0;
 }
+
+/* body:has(noscript){
+    display: none;
+} */
+
+/* noscript{
+    width: 30px;
+} */
+
+/* dialog[open] {
+    position: absolute;
+    color: #4d3c3c;
+} */
+
+/* noscript{
+    margin-bottom: 1em;
+} */
