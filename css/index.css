@@ -18,12 +18,15 @@
     box-sizing: border-box;
 }
 
-:root {
+body {
     --first-color: rgb(26, 26, 26);
     --second-color: rgb(243, 148, 148);
     --third-color: rgb(250, 69, 69);
     --fourth-color: #000000;
     --fifth-color: #ffffff;
+    font: calc(1*16*100/360*1vw)/1.35 "Mukta", sans-serif;
+    color: var(--first-color);
+    background-color: var(--second-color);
 }
 
 body:has(details[open]) {
@@ -34,21 +37,15 @@ body:has(details[open]) {
     --fifth-color: #4d3c3c;
 }
 
-body {
-    font: calc(1*16*100/360*1vw)/1.35 "Mukta", sans-serif;
-
-}
-
 main {
     padding: 3em 10vw 4em;
-    color: var(--first-color);
-    background-color: var(--second-color);
 }
 
 div {
     display: flex;
     flex-wrap: wrap;
-    gap: 3em;
+    justify-content: space-between;
+    row-gap: 3em;
 }
 
 form {
@@ -62,11 +59,11 @@ form {
     margin-bottom: 2em;
 }
 
-label {
-    /* width: 40%; */
-    /* width: fit-content; */
-    /* display: inline; */
-}
+/* label {
+    width: 40%;
+    width: fit-content;
+    display: inline;
+} */
 
 input {
     /* display: inline; */
@@ -83,6 +80,7 @@ article {
 }
 
 ul {
+    height: 100%;
     padding: 1em;
     background-color: var(--fifth-color);
     list-style-type: none;
@@ -155,6 +153,7 @@ button {
     font-family: 'Mukta';
     font-size: 1em;
     display: block;
+    cursor: pointer;
     border-radius: 1em;
     padding: 0.5em 1em;
     color: #000000;
@@ -162,19 +161,26 @@ button {
     margin: 2em auto 0;
 }
 
-/* body:has(noscript){
-    display: none;
-} */
+@media screen and (min-width: 541px) {
+    body {
+        font-size: clamp(1em, calc(1*16*100/600*1vw), 20px);
+    }
 
-/* noscript{
-    width: 30px;
-} */
+    main {
+        padding: 3em 7.5vw 4em;
+    }
 
-/* dialog[open] {
-    position: absolute;
-    color: #4d3c3c;
-} */
+    article {
+        width: 45%;
+    }
+}
 
-/* noscript{
-    margin-bottom: 1em;
-} */
+@media screen and (min-width: 1083px) {
+    body {
+        font-size: clamp(1em, calc(1*16*100/1366*1vw), 1.25em);
+    }
+
+    article {
+        width: 22.5%;
+    }
+}
