@@ -1,27 +1,29 @@
-# Rick and Morty WEBAPP
+# Rick and Morty Web App
 
-## Scope
+## Overview
 
-This webapp
+Our web app provides comprehensive information about all characters from the popular show, Rick and Morty. Leveraging the show's API, the app fetches and displays a variety of character data tranformed from the original JSON format, including name, picture, status, gender, species, and more.
 
-## Tech stack
+Users can utilize the search bar to filter characters by name. As users scroll through the results (20 per request), the app automatically fetches the next 20 characters for a seamless browsing experience.
 
-The technology used to create this project is:
+## Technology Stack
 
-* Rick and morty API: this API provides all the data from the Rick and Morty show. It provides three major information blocks: characthers, locations and episodes. Documentation of the API can be found in [https://rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation).
+This project was built using the following technologies:
 
-* HTML: the markup language that describes the structure of the website and links to other resources (CSS, Javascript, images...).
+* Rick and morty API: this API provides extensive data from the Rick and Morty show, including information about characters, locations, and episodes. You can find the API documentation in [https://rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation).
 
-* CSS: the style sheet language that gives the webapp it's look (colors, padding, layout...) and allows responsiveness (correct adaptation of content to any screen no matter the device).
+* HTML: the markup language used to structure the website and link to other resources such as CSS, javascript, and images.
 
-* Javascript: the only programming language available for the browser (client side). In this webapp, it allows to fetch content from the API, update the DOM with the content recieved, update the fetch url according to the user input and implement infinite scrolling.
+* CSS: the style sheet language that defines the app's aesthetics (colors, padding, layout...) and ensures responsiveness across various devices.
 
-* Git: the most popular open source control version system to track changes in the source code of software development. It allows collaboration between multiple users.
+* Javascript: the programming language used for client-side operations. In this app, javascript fetches content from the API, updates the DOM with the received content, modifies the fetch URL based on user input, and implements infinite scrolling.
 
-* Github: the most famous platform to host Git repositories. This is where all the code of the webapp is stored.
+* Git: an open-source version control system used to track changes in the source code during software development. It facilitates collaboration among multiple users.
 
-* Github Pages: a the static site hosting service from Github that allows to use repositories as websites, as long as the content is only front-end technology. Since it's free, easy to use, and this project fits that criteria (the back-end is hosted elsewhere and we access it thanks to the API) it's the perfect choice to have a functioning public version of the project.
+* Github: a platform for hosting Git repositories. All the code for this web app is stored here.
 
-## Live version
+* Github Pages: A static site hosting service from GitHub that turns repositories into websites, provided the content is front-end technology. Given its free nature and ease of use, and considering that our project's back-end is hosted elsewhere (accessible via the API), GitHub Pages is the ideal choice for hosting a public version of our project.
 
-Couldn't be easier to use! Just go to [https://designoper.github.io/rick-morty/](https://designoper.github.io/rick-morty/). Enjoy!
+## Access the Live Version
+
+Accessing the web app is simple! Just visit [https://designoper.github.io/rick-morty/](https://designoper.github.io/rick-morty/) and enjoy exploring the world of Rick and Morty!
