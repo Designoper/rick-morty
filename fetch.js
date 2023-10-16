@@ -10,9 +10,17 @@ const loadCharacters = (endpoint, __param = '') => {
 	fetch(request)
 
 		.then(response => {
+			if (!response.ok) {
+				throw new Error(`Sorry, we couldn't recover the data.`);
+			}
 			errorMessage.innerHTML = '';
 			nextPageButton.style.visibility = 'visible';
 			return response.json();
+		})
+
+		.catch(error => {
+			console.error('Error:', error);
+			errorMessage.innerHTML = error;
 		})
 
 		.then(({ results: characters, info }) => {
