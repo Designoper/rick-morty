@@ -33,11 +33,11 @@ body {
 
 @media (prefers-color-scheme: dark) {
     body {
-        /* --main-text-color: #ffffff;
-        --main-background-color: #000000;
-        --main-article-background-color: #6045FA;
-        --h2-ul-background-color: #4d3c3c;
-        --li-color: #d8d8d8; */
+        --main-text-color: #ffffff;
+        --main-background-color: #004d4d;
+        --main-article-background-color: #007474;
+        --h2-ul-background-color: #001741;
+        --li-color: #d8d8d8;
     }
 
     h1 img:last-of-type {
