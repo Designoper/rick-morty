@@ -1,10 +1,10 @@
-const characterEndpoint = `https://rickandmortyapi.com/api/character/?name=`;
-const fetchedContent = document.querySelector('#characters');
+const characterApiUrl = `https://rickandmortyapi.com/api/character/?name=`;
+const characterContainer = document.querySelector('#fetchContainer');
 const errorMessage = document.querySelector('#errorMessage');
 const searchBar = document.querySelector('#searchBar');
 const nextPageButton = document.querySelector('#nextPageButton');
 
-const loadCharacters = (url) => {
+const fetchAndDisplayCharacters = (url) => {
 
 	fetch(url)
 
@@ -24,8 +24,8 @@ const loadCharacters = (url) => {
 			nextPageButton.style.display = 'none';
 		})
 
-		.then(({ results: characters, info }) => {
-			const apiResponse = characters.map(character =>
+		.then(({ results: characters, info: page }) => {
+			const characterCardsHtml = characters.map(character =>
 				`<article>
 					<h2>${character.name}</h2>
 					<img src="${character.image}" alt="Character ${character.name}">
@@ -40,19 +40,19 @@ const loadCharacters = (url) => {
 				</article>`
 			).join('');
 
-			fetchedContent.innerHTML += apiResponse;
+			characterContainer.innerHTML += characterCardsHtml;
 
-			if (info.next) {
+			if (page.next) {
 				nextPageButton.style.display = 'block';
-				nextPageButton.onclick = () => loadCharacters(info.next);
+				nextPageButton.onclick = () => fetchAndDisplayCharacters(page.next);
 			}
 			else nextPageButton.style.display = 'none';
 		});
 }
 
-loadCharacters(characterEndpoint);
+fetchAndDisplayCharacters(characterApiUrl);
 
 searchBar.oninput = () => {
-	fetchedContent.innerHTML = '';
-	loadCharacters(`${characterEndpoint}${searchBar.value}`);
+	characterContainer.innerHTML = '';
+	fetchAndDisplayCharacters(`${characterApiUrl}${searchBar.value}`);
 }
