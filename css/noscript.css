@@ -2,7 +2,7 @@ main {
 	display: none;
 }
 
-dialog {
+dialog[open] {
 	width: 80%;
 	position: absolute;
 	top: 50%;
