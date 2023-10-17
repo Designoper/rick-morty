@@ -20,15 +20,17 @@
 
 	<link href="./css/index.css" rel="preload stylesheet" as="style">
 
-	<script src="./fetch.js" defer></script>
+	<script src="./js/index.js" defer></script>
 
 </head>
 
 <body>
 
 	<noscript>
+
 		<link href="./css/noscript.css" rel="stylesheet">
 		<dialog open>The core functionality of this website requires javascript, which is not enabled in your browser. Please make sure you have javascript activated and refresh the page.</dialog>
+
 	</noscript>
 
 	<main>
@@ -39,15 +41,15 @@
 		</h1>
 
 		<form accept-charset="utf-8">
-			<label for="input">Search character</label>
-			<input id="input" autofocus>
+			<label for="searchBar">Search character</label>
+			<input id="searchBar" autofocus>
 		</form>
 
 		<div id="characters"></div>
 
-		<p id="error"></p>
+		<p id="errorMessage"></p>
 
-		<button type="button" id="next-page">Show more</button>
+		<button type="button" id="nextPageButton">Show more</button>
 
 	</main>
 
