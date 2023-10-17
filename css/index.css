@@ -105,7 +105,7 @@ ul {
 }
 
 h1 {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
 }
 
 h1 img {
@@ -140,6 +140,10 @@ button {
         padding: 3em 7.5vw 4em;
     }
 
+    h1 {
+        margin-bottom: 2em;
+    }
+
     h1 img {
         width: 80%;
     }
@@ -154,6 +158,10 @@ button {
     body {
         font-size: clamp(1em, calc(1*16*100/1366*1vw), 1.25em);
         padding: 5em 7.5vw 6em;
+    }
+
+    h1 {
+        margin-bottom: 2.5em;
     }
 
     h1 img {
