@@ -1,32 +1,30 @@
 const characterEndpoint = `https://rickandmortyapi.com/api/character/?name=`;
-const nextPageButton = document.querySelector('#next-page');
 const apiContent = document.querySelector('#characters');
 const errorMessage = document.querySelector('#error');
 const userInput = document.querySelector('#input');
+const elemento = document.querySelector('#point');
 
-const loadCharacters = (aaa, __param) => {
-	console.log(__param)
+const loadCharacters = (request1, __param) => {
+
 	let request;
-	__param === undefined ? request = aaa : request = `${characterEndpoint}${__param}`
+	__param === undefined ? request = request1 : request = `${request1}${__param}`
 
 	fetch(request)
 
 		.then(response => {
-			if (__param !== '' && !response.ok) {
+			if (__param !== undefined && !response.ok) {
 				throw new Error(`No characters found.`);
 			}
 			if (!response.ok) {
 				throw new Error(`Sorry, we couldn't recover the data.`);
 			}
 			errorMessage.innerHTML = '';
-			nextPageButton.style.visibility = 'visible';
 			return response.json();
 		})
 
 		.catch(error => {
 			console.error('Error:', error);
 			errorMessage.innerHTML = error;
-			apiContent.innerHTML = '';
 		})
 
 		.then(({ results: characters, info }) => {
@@ -44,24 +42,42 @@ const loadCharacters = (aaa, __param) => {
 					</ul>
 				</article>`
 			).join('');
-			apiContent.innerHTML = (__param === '' ? apiContent.innerHTML + content : content);
-			nextPageButton.onclick = () => info.next === null ? errorMessage.innerHTML = 'No more characters' : loadCharacters(info.next);
-		})
 
-	// .catch(error => {
-	// 	console.error('Error:', error);
-	// 	apiContent.innerHTML = '';
-	// 	errorMessage.innerHTML = 'No results found';
-	// 	nextPageButton.style.visibility = 'hidden';
-	// });
-};
+			// apiContent.innerHTML = __param === undefined ? apiContent.innerHTML + content : content;
+			apiContent.innerHTML += content;
+			// document.querySelector("#main").insertAdjacentHTML("beforeend", `<span id="point"></span>`);
+			// const observer = new IntersectionObserver(function (entries) {
+			// 	// entries es una matriz de objetos IntersectionObserverEntry
+			// 	// Para cada entrada, comprueba si el elemento está en la vista
+			// 	entries.forEach(function (entry) {
+			// 		if (entry.isIntersecting) {
+			// 			loadCharacters(info.next);
+			// 		}
+			// 	});
+			// });
+
+			// observer.observe(elemento);
+
+			// if (info.next !== null) {
+
+
+
+		}
+
+			// }
+
+
+			// .catch(error => {
+			// 	console.error('Error:', error);
+			// 	apiContent.innerHTML = '';
+			// 	// errorMessage.innerHTML = 'No results found';
+			// });
+		)
+}
 
 loadCharacters(characterEndpoint);
 
 userInput.oninput = () => {
-	if (userInput.value === '') {
-		loadCharacters(characterEndpoint);
-	} else {
-		loadCharacters(characterEndpoint, userInput.value);
-	}
-};
+	apiContent.innerHTML = '';
+	userInput.value === '' ? loadCharacters(characterEndpoint) : loadCharacters(characterEndpoint, userInput.value);
+}
