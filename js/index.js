@@ -1,5 +1,5 @@
 const characterApiUrl = `https://rickandmortyapi.com/api/character/?name=`;
-const characterContainer = document.querySelector('#fetchContainer');
+const characterContainer = document.querySelector('#characterContainer');
 const errorMessage = document.querySelector('#errorMessage');
 const searchBar = document.querySelector('#searchBar');
 const nextPageButton = document.querySelector('#nextPageButton');
