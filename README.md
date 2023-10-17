@@ -16,7 +16,7 @@ This project was built using the following technologies:
 
 * CSS: the style sheet language that defines the app's aesthetics (colors, padding, layout...) and ensures responsiveness across various devices.
 
-* Javascript: the programming language used for client-side operations. In this app, javascript fetches content from the API, updates the DOM with the received content, modifies the fetch URL based on user input, and implements infinite scrolling.
+* Javascript: the programming language used for client-side operations. In this app, javascript fetches content from the API, updates the DOM with the received content, modifies the fetch URL based on user input, and gives a button the capability to fetch more characters.
 
 * Git: an open-source version control system used to track changes in the source code during software development. It facilitates collaboration among multiple users.
 
