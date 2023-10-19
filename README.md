@@ -2,9 +2,9 @@
 
 ## Overview
 
-Our web app provides comprehensive information about all characters from the popular show, Rick and Morty. Leveraging the show's API, the app fetches and displays a variety of character data tranformed from the original JSON format, including name, picture, status, gender, species, and more.
+Our web app provides comprehensive information about all characters from the popular show, Rick and Morty. Leveraging the show's API, the app fetches and displays a variety of character data transformed from the original JSON format, including name, picture, status, gender, species, and more.
 
-Users can utilize the search bar to filter characters by name. As users scroll through the results (20 per request), the app automatically fetches the next 20 characters for a seamless browsing experience.
+Users can utilize the search bar to filter characters by name. As users scroll through the results (20 per request), they will find a button to load more, if there's a next page.
 
 ## Technology Stack
 
@@ -24,6 +24,20 @@ This project was built using the following technologies:
 
 * Github Pages: A static site hosting service from GitHub that turns repositories into websites, provided the content is front-end technology. Given its free nature and ease of use, and considering that our project's back-end is hosted elsewhere (accessible via the API), GitHub Pages is the ideal choice for hosting a public version of our project.
 
-## Access the Live Version
+## How to use
 
-Accessing the web app is simple! Just visit [https://designoper.github.io/rick-morty/](https://designoper.github.io/rick-morty/) and enjoy exploring the world of Rick and Morty!
+You have 2 ways to try the app:
+
+1. Locally: open a terminal and use the command `git clone https://github.com/Designoper/rick-morty`, then open the index.html file with your browser of choice.
+
+2. Online hosted: Just visit [https://designoper.github.io/rick-morty/](https://designoper.github.io/rick-morty/).
+
+## Why it fulfills the criteria
+
+* API connection: it successfully connects to the API, retrieves data from it and uses its commands (ex: info.next).
+
+* Style and design: CSS is used to style the app and the UI is easy to understand and operate with.
+
+* Responsive: the app can be used on mobile, tablet, or computer. You can also use the developer tools of the browser to test how it looks at different screen sizes.
+
+* Documentation: the documentation for the app is provided in this README file.
