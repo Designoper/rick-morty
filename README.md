@@ -22,7 +22,7 @@ This project was built using the following technologies:
 
 * Github: a platform for hosting Git repositories. All the code for this web app is stored here.
 
-* Github Pages: A static site hosting service from GitHub that turns repositories into websites, provided the content is front-end technology. Given its free nature and ease of use, and considering that our project's back-end is hosted elsewhere (accessible via the API), GitHub Pages is the ideal choice for hosting a public version of our project.
+* Github Pages: a static site hosting service from GitHub that turns repositories into websites, provided the content is front-end technology. Given its free nature and ease of use, and considering that our project's back-end is hosted elsewhere (accessible via the API), GitHub Pages is the ideal choice for hosting a public version of our project.
 
 ## How to use
 
