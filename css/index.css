@@ -27,7 +27,7 @@ body {
     font: calc(1*16*100/360*1vw)/1.35 "Mukta", sans-serif;
     color: var(--main-text-color);
     background-color: var(--main-background-color);
-    padding: 3em 10vw 4em;
+    padding: 3em 15vw 4em;
     text-wrap: balance;
 }
 
@@ -129,6 +129,17 @@ button {
     color: var(--main-text-color);
     background-color: var(--h2-ul-background-color);
     margin: 2em auto 0;
+}
+
+a {
+    position: fixed;
+    bottom: 0.65em;
+    right: 0.65em;
+}
+
+svg {
+    width: 2em;
+    fill: var(--main-text-color);
 }
 
 @media screen and (min-width: 541px) {
