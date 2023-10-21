@@ -9,12 +9,10 @@ const fetchAndDisplayCharacters = (url) => {
 	fetch(url)
 
 		.then(response => {
-			if (searchBar.value !== '' && !response.ok) {
-				throw new Error(`No characters found.`);
-			}
 			if (!response.ok) {
-				throw new Error(`Sorry, we couldn't recover the data.`);
+				throw (`No characters found.`);
 			}
+
 			errorMessage.innerHTML = '';
 			return response.json();
 		})
