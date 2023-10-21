@@ -21,7 +21,7 @@
 body {
     --main-text-color: #303030;
     --main-background-color: #1cb5e4;
-    --main-article-background-color: #0f73d1;
+    --article-background-color: #0f73d1;
     --h2-ul-background-color: #d3e2e9;
     --li-color: #505050;
     font: calc(1*16*100/360*1vw)/1.35 "Mukta", sans-serif;
@@ -39,7 +39,7 @@ body {
     body {
         --main-text-color: #ffffff;
         --main-background-color: #004d4d;
-        --main-article-background-color: #016d6d;
+        --article-background-color: #016d6d;
         --h2-ul-background-color: #002222;
         --li-color: #d8d8d8;
     }
@@ -54,7 +54,7 @@ body {
 }
 
 :focus-visible {
-    outline: var(--main-article-background-color) solid 3px;
+    outline: var(--article-background-color) solid 3px;
 }
 
 h1 img {
@@ -85,7 +85,7 @@ output {
 
 article {
     border-radius: 1.5em;
-    background-color: var(--main-article-background-color);
+    background-color: var(--article-background-color);
     overflow: hidden;
 }
 
