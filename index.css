@@ -141,7 +141,7 @@ svg {
     fill: #ffffff;
 }
 
-@media screen and (min-width: 541px) {
+@media screen and (541px <= width) {
     body {
         font-size: clamp(1em, calc(1*16*100/600*1vw), 1.25em);
         padding: 3em 7.5vw 4em;
@@ -169,7 +169,7 @@ svg {
     }
 }
 
-@media screen and (min-width: 1083px) {
+@media screen and (1083px <= width) {
     body {
         font-size: clamp(1em, calc(1*16*100/1366*1vw), 1.25em);
         padding: 5em 7.5vw 6em;
