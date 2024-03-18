@@ -75,7 +75,7 @@ input {
     background-color: var(--h2-ul-background-color);
 
     &::placeholder {
-        color: var(--main-text-color);
+        color: inherit;
         opacity: 60%;
     }
 }
@@ -109,16 +109,9 @@ h2 {
 ul {
     height: 100%;
     padding: 1.25em;
+    color: var(--li-color);
     background-color: var(--h2-ul-background-color);
     list-style-type: none;
-}
-
-li {
-    color: var(--li-color);
-}
-
-strong {
-    color: var(--main-text-color);
 }
 
 button {
@@ -182,7 +175,7 @@ svg {
     h1 {
         img {
             width: 50%;
-            margin-bottom: 2.5em
+            margin-bottom: 2.5em;
         }
     }
 
