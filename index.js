@@ -54,6 +54,6 @@ const clean = () => {
 const addUserInput = () => {
 	clean();
 	fetchApi(`${API_ENDPOINT}${SEARCH_BAR.value}`);
-};
+}
 
 SEARCH_BAR.oninput = addUserInput;
