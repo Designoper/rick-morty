@@ -4,7 +4,7 @@ const ERROR_MESSAGE = document.getElementById('errorMessage');
 const SEARCH_BAR = document.getElementById('searchBar');
 const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
 
-const fetchAndDisplayCharacters = (url) => {
+const fetchApi = (url) => {
 
 	fetch(url)
 
@@ -42,15 +42,15 @@ const fetchAndDisplayCharacters = (url) => {
 
 			if (page.next) {
 				NEXT_PAGE_BUTTON.style.display = 'block';
-				NEXT_PAGE_BUTTON.onclick = () => fetchAndDisplayCharacters(page.next);
+				NEXT_PAGE_BUTTON.onclick = () => fetchApi(page.next);
 			}
 			else NEXT_PAGE_BUTTON.style.display = 'none';
 		});
 }
 
-fetchAndDisplayCharacters(API_ENDPOINT);
+fetchApi(API_ENDPOINT);
 
 SEARCH_BAR.oninput = () => {
 	FETCH_OUTPUT.innerHTML = '';
-	fetchAndDisplayCharacters(`${API_ENDPOINT}${SEARCH_BAR.value}`);
+	fetchApi(`${API_ENDPOINT}${SEARCH_BAR.value}`);
 }
