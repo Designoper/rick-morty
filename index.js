@@ -1,8 +1,8 @@
-const characterApiUrl = `https://rickandmortyapi.com/api/character/?name=`;
-const characterContainer = document.querySelector('#characterContainer');
-const errorMessage = document.querySelector('#errorMessage');
-const searchBar = document.querySelector('#searchBar');
-const nextPageButton = document.querySelector('#nextPageButton');
+const API_ENDPOINT = `https://rickandmortyapi.com/api/character/?name=`;
+const FETCH_OUTPUT = document.getElementById('fetchOutput');
+const ERROR_MESSAGE = document.getElementById('errorMessage');
+const SEARCH_BAR = document.getElementById('searchBar');
+const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
 
 const fetchAndDisplayCharacters = (url) => {
 
@@ -13,17 +13,17 @@ const fetchAndDisplayCharacters = (url) => {
 				throw (`No characters found.`);
 			}
 
-			errorMessage.innerHTML = '';
+			ERROR_MESSAGE.innerHTML = '';
 			return response.json();
 		})
 
 		.catch(error => {
-			errorMessage.innerHTML = error;
-			nextPageButton.style.display = 'none';
+			ERROR_MESSAGE.innerHTML = error;
+			NEXT_PAGE_BUTTON.style.display = 'none';
 		})
 
 		.then(({ results: characters, info: page }) => {
-			const characterCardsHtml = characters.map(character =>
+			const CHARACTER_CARDS = characters.map(character =>
 				`<article>
 					<h2>${character.name}</h2>
 					<img src="${character.image}" alt="Character ${character.name}">
@@ -38,19 +38,19 @@ const fetchAndDisplayCharacters = (url) => {
 				</article>`
 			).join('');
 
-			characterContainer.innerHTML += characterCardsHtml;
+			FETCH_OUTPUT.innerHTML += CHARACTER_CARDS;
 
 			if (page.next) {
-				nextPageButton.style.display = 'block';
-				nextPageButton.onclick = () => fetchAndDisplayCharacters(page.next);
+				NEXT_PAGE_BUTTON.style.display = 'block';
+				NEXT_PAGE_BUTTON.onclick = () => fetchAndDisplayCharacters(page.next);
 			}
-			else nextPageButton.style.display = 'none';
+			else NEXT_PAGE_BUTTON.style.display = 'none';
 		});
 }
 
-fetchAndDisplayCharacters(characterApiUrl);
+fetchAndDisplayCharacters(API_ENDPOINT);
 
-searchBar.oninput = () => {
-	characterContainer.innerHTML = '';
-	fetchAndDisplayCharacters(`${characterApiUrl}${searchBar.value}`);
+SEARCH_BAR.oninput = () => {
+	FETCH_OUTPUT.innerHTML = '';
+	fetchAndDisplayCharacters(`${API_ENDPOINT}${SEARCH_BAR.value}`);
 }
