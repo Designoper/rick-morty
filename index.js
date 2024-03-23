@@ -29,7 +29,7 @@ const fetchApi = async (url) => {
 			</article>`
 		).join('');
 
-		FETCH_RESPONSE.innerHTML += CHARACTER_CARDS;
+		FETCH_RESPONSE.insertAdjacentHTML("beforeend", CHARACTER_CARDS);
 
 		if (page.next) {
 			NEXT_PAGE_BUTTON.style.display = 'block';
@@ -39,7 +39,7 @@ const fetchApi = async (url) => {
 		}
 
 	} catch (error) {
-		ERROR_MESSAGE.innerHTML = error.message;
+		ERROR_MESSAGE.textContent = error.message;
 		NEXT_PAGE_BUTTON.style.display = 'none';
 	}
 };
@@ -48,7 +48,7 @@ window.onload = () => fetchApi(API_ENDPOINT);
 
 const clean = () => {
 	FETCH_RESPONSE.innerHTML = '';
-	ERROR_MESSAGE.innerHTML = '';
+	ERROR_MESSAGE.textContent = '';
 }
 
 const addUserInput = () => {
