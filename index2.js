@@ -5,24 +5,18 @@ const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
 
 const mainFunction = async (url) => {
 	const API_RESPONSE = await fetchContent(url);
-	const PARSED_JSON = await parseJson(API_RESPONSE);
-	await printCharacters(PARSED_JSON);
-	await buttonState(PARSED_JSON);
+	await printCharacters(API_RESPONSE);
+	await buttonState(API_RESPONSE);
 }
 
 const fetchContent = async (url = API_ENDPOINT) => {
 	try {
 		const API_RESPONSE = await fetch(url);
-		return API_RESPONSE;
-
+		const { results: characters, info: page } = await API_RESPONSE.json();
+		return { characters, page }
 	} catch (error) {
 		FETCH_RESPONSE.textContent = 'Connection failed.';
 	}
-}
-
-const parseJson = async (response) => {
-	const { results: characters, info: page } = await response.json();
-	return { characters, page };
 }
 
 const printCharacters = async ({ characters }) => {
@@ -33,7 +27,7 @@ const printCharacters = async ({ characters }) => {
 				<img src="${character.image}" alt="Character ${character.name}">
 					<ul>
 						<li><strong>Species:</strong> ${character.species}</li>
-						${character.type === '' ? '' : `<li><strong>Type:</strong> ${character.type}</li>`}
+						${character.type ? `<li><strong>Type:</strong> ${character.type}</li>` : ''}
 						<li><strong>Status:</strong> ${character.status}</li>
 						<li><strong>Gender:</strong> ${character.gender}</li>
 						<li><strong>Origin:</strong> ${character.origin.name}</li>
@@ -43,7 +37,6 @@ const printCharacters = async ({ characters }) => {
 		).join('');
 
 		FETCH_RESPONSE.insertAdjacentHTML("beforeend", CHARACTER_CARDS);
-
 	} catch (error) {
 		FETCH_RESPONSE.textContent = 'No characters found.';
 		NEXT_PAGE_BUTTON.style.display = 'none';
@@ -51,12 +44,8 @@ const printCharacters = async ({ characters }) => {
 }
 
 const buttonState = async ({ page }) => {
-	if (page.next === null) {
-		NEXT_PAGE_BUTTON.style.display = 'none';
-	} else {
-		NEXT_PAGE_BUTTON.style.display = 'block';
-		NEXT_PAGE_BUTTON.onclick = () => mainFunction(page.next);
-	}
+	NEXT_PAGE_BUTTON.style.display = page.next ? 'block' : 'none';
+	NEXT_PAGE_BUTTON.onclick = () => mainFunction(page.next);
 }
 
 const clean = () => FETCH_RESPONSE.innerHTML = '';
