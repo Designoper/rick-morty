@@ -7,10 +7,6 @@ const fetchApi = async (url) => {
 	try {
 		const RESPONSE = await fetch(url);
 
-		if (!RESPONSE.ok) {
-			throw new Error('No characters found.');
-		}
-
 		const { results: characters, info: page } = await RESPONSE.json();
 
 		const CHARACTER_CARDS = characters.map(character =>
@@ -38,16 +34,14 @@ const fetchApi = async (url) => {
 		}
 
 	} catch (error) {
-		FETCH_RESPONSE.textContent = error.message;
+		FETCH_RESPONSE.textContent = 'No characters found';
 		NEXT_PAGE_BUTTON.style.display = 'none';
 	}
-};
+}
 
 window.onload = () => fetchApi(API_ENDPOINT);
 
-const clean = () => {
-	FETCH_RESPONSE.innerHTML = '';
-}
+const clean = () => FETCH_RESPONSE.innerHTML = '';
 
 const addUserInput = () => {
 	clean();
