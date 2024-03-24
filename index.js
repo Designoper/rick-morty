@@ -14,7 +14,8 @@ const fetchResource = async (url = API_ENDPOINT) => {
 		const RESPONSE = await fetch(url);
 		const { results: characters, info: page } = await RESPONSE.json();
 		return { characters, page }
-	} catch (error) {
+	}
+	catch (error) {
 		RESPONSE_CONTAINER.textContent = 'Connection failed.';
 	}
 }
