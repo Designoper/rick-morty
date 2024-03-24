@@ -5,20 +5,25 @@ const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
 
 const mainFunction = async (url) => {
 	const RESPONSE = await fetchResource(url);
-	printCharacters(RESPONSE);
-	updateButton(RESPONSE);
+	const PARSED_JSON = await parseJson(RESPONSE);
+	printCharacters(PARSED_JSON);
+	updateButton(PARSED_JSON);
 }
 
 const fetchResource = async (url = API_ENDPOINT) => {
 	try {
 		const RESPONSE = await fetch(url);
-		const { results: characters, info: page } = await RESPONSE.json();
-		return { characters, page }
+		return RESPONSE;
 	}
 
 	catch (error) {
 		RESPONSE_CONTAINER.textContent = 'Connection failed.';
 	}
+}
+
+const parseJson = async (response) => {
+	const { results: characters, info: page } = await response.json();
+	return { characters, page }
 }
 
 const printCharacters = ({ characters }) => {
@@ -27,14 +32,14 @@ const printCharacters = ({ characters }) => {
 			`<article>
 				<h2>${character.name}</h2>
 				<img src="${character.image}" alt="Character ${character.name}">
-					<ul>
-						<li><strong>Species:</strong> ${character.species}</li>
-						${character.type ? `<li><strong>Type:</strong> ${character.type}</li>` : ''}
-						<li><strong>Status:</strong> ${character.status}</li>
-						<li><strong>Gender:</strong> ${character.gender}</li>
-						<li><strong>Origin:</strong> ${character.origin.name}</li>
-						<li><strong>Location:</strong> ${character.location.name}</li>
-					</ul>
+				<ul>
+					<li><strong>Species:</strong> ${character.species}</li>
+					${character.type ? `<li><strong>Type:</strong> ${character.type}</li>` : ''}
+					<li><strong>Status:</strong> ${character.status}</li>
+					<li><strong>Gender:</strong> ${character.gender}</li>
+					<li><strong>Origin:</strong> ${character.origin.name}</li>
+					<li><strong>Location:</strong> ${character.location.name}</li>
+				</ul>
 			</article>`
 		).join('');
 
