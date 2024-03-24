@@ -15,6 +15,7 @@ const fetchResource = async (url = API_ENDPOINT) => {
 		const { results: characters, info: page } = await RESPONSE.json();
 		return { characters, page }
 	}
+
 	catch (error) {
 		RESPONSE_CONTAINER.textContent = 'Connection failed.';
 	}
@@ -38,7 +39,9 @@ const printCharacters = ({ characters }) => {
 		).join('');
 
 		RESPONSE_CONTAINER.insertAdjacentHTML("beforeend", CHARACTER_CARDS);
-	} catch (error) {
+	}
+
+	catch (error) {
 		RESPONSE_CONTAINER.textContent = 'No characters found.';
 		NEXT_PAGE_BUTTON.style.display = 'none';
 	}
