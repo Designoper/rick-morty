@@ -1,4 +1,4 @@
-const API_ENDPOINT = `https://rickandmortyapi.com/api/character/?name=`;
+const API_ENDPOINT = `https://rickandmortyapi.com/ap/character/?name=`;
 const RESPONSE_CONTAINER = document.getElementById('fetchResponse');
 const SEARCH_BAR = document.getElementById('searchBar');
 const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
@@ -17,13 +17,21 @@ const fetchResource = async (url = API_ENDPOINT) => {
 	}
 
 	catch (error) {
-		RESPONSE_CONTAINER.textContent = 'Connection failed.';
+		error = `fetchResource function has failed.`;
+		RESPONSE_CONTAINER.textContent = `Connection failed.`;
+		console.error(error);
 	}
 }
 
 const parseJson = async (response) => {
-	const { results: characters, info: page } = await response.json();
-	return { characters, page }
+	try {
+		const { results: characters, info: page } = await response.json();
+		return { characters, page }
+	}
+
+	catch (error) {
+		console.error(`parseJson function has failed.`);
+	}
 }
 
 const printCharacters = ({ characters }) => {
@@ -49,6 +57,7 @@ const printCharacters = ({ characters }) => {
 	catch (error) {
 		RESPONSE_CONTAINER.textContent = 'No characters found.';
 		NEXT_PAGE_BUTTON.style.display = 'none';
+		console.warn(`No search results found`);
 	}
 }
 
