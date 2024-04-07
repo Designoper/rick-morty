@@ -1,4 +1,4 @@
-const API_ENDPOINT = `https://rickandmortyapi.com/ap/character/?name=`;
+const API_ENDPOINT = `https://rickandmortyapi.com/api/character/?name=`;
 const RESPONSE_CONTAINER = document.getElementById('fetchResponse');
 const SEARCH_BAR = document.getElementById('searchBar');
 const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
@@ -10,7 +10,7 @@ const mainFunction = async (url) => {
 	updateButton(PARSED_JSON);
 }
 
-const fetchResource = async (url = API_ENDPOINT) => {
+const fetchResource = async (url) => {
 	try {
 		const RESPONSE = await fetch(url);
 		return RESPONSE;
@@ -19,7 +19,7 @@ const fetchResource = async (url = API_ENDPOINT) => {
 	catch (error) {
 		error = `fetchResource function has failed.`;
 		RESPONSE_CONTAINER.textContent = `Connection failed.`;
-		console.error(error);
+		throw (console.error(error));
 	}
 }
 
@@ -30,7 +30,7 @@ const parseJson = async (response) => {
 	}
 
 	catch (error) {
-		console.error(`parseJson function has failed.`);
+		throw (console.warn(`parseJson function has failed.`));
 	}
 }
 
@@ -61,16 +61,16 @@ const printCharacters = ({ characters }) => {
 	}
 }
 
-const updateButton = ({ page }) => {
+const updateButton = ({ page = false }) => {
 	NEXT_PAGE_BUTTON.style.display = page.next ? 'block' : 'none';
-	NEXT_PAGE_BUTTON.addEventListener("click", () => mainFunction(page.next));
+	NEXT_PAGE_BUTTON.onclick = () => mainFunction(page.next);
 }
 
 const clean = () => RESPONSE_CONTAINER.innerHTML = '';
 
-SEARCH_BAR.addEventListener("input", () => {
+SEARCH_BAR.oninput = () => {
 	clean();
 	mainFunction(`${API_ENDPOINT}${SEARCH_BAR.value}`);
-});
+}
 
-window.addEventListener("load", () => mainFunction());
+window.onload = () => mainFunction(API_ENDPOINT);
