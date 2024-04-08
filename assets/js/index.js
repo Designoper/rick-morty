@@ -16,10 +16,10 @@ const fetchResource = async (url) => {
 		return RESPONSE;
 	}
 
-	catch (error) {
-		error = `fetchResource function has failed.`;
+	catch {
+		const CONSOLE_MESSAGE = `fetchResource function has failed.`;
 		RESPONSE_CONTAINER.textContent = `Connection failed.`;
-		throw (console.error(error));
+		throw (console.warn(CONSOLE_MESSAGE));
 	}
 }
 
@@ -29,8 +29,9 @@ const parseJson = async (response) => {
 		return { characters, page }
 	}
 
-	catch (error) {
-		throw (console.warn(`parseJson function has failed.`));
+	catch {
+		const CONSOLE_MESSAGE = `parseJson function has failed.`;
+		throw (console.warn(CONSOLE_MESSAGE));
 	}
 }
 
@@ -54,7 +55,7 @@ const printCharacters = ({ characters }) => {
 		RESPONSE_CONTAINER.insertAdjacentHTML("beforeend", CHARACTER_CARDS);
 	}
 
-	catch (error) {
+	catch {
 		RESPONSE_CONTAINER.textContent = 'No characters found.';
 		NEXT_PAGE_BUTTON.style.display = 'none';
 		console.warn(`No search results found`);
