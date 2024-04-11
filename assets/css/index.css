@@ -70,7 +70,7 @@ input {
     }
 }
 
-output {
+#fetchResponse {
     display: grid;
     row-gap: 3em;
 }
@@ -142,7 +142,7 @@ svg {
         margin: 0 auto 2.5em;
     }
 
-    output {
+    #fetchResponse {
         grid-template-columns: repeat(2, 1fr);
         gap: 2em;
     }
@@ -169,7 +169,7 @@ svg {
         width: 50%;
     }
 
-    output {
+    #fetchResponse {
         grid-template-columns: repeat(4, 1fr);
         gap: 2.5em;
     }
