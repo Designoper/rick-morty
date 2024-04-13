@@ -9,17 +9,21 @@
     font-weight: bold;
 }
 
-body {
+:root {
     --main-text-color: #303030;
     --main-background-color: #1cb5e4;
     --article-background-color: #0f73d1;
     --h2-ul-background-color: #d3e2e9;
     --li-color: #505050;
+    scrollbar-color: var(--article-background-color) var(--h2-ul-background-color);
+}
+
+body {
     font: calc(1*16*100/360*1vw)/1.35 "Mukta", sans-serif;
-    color: var(--main-text-color);
-    background-color: var(--main-background-color);
     padding: 3em 15vw 4em;
     text-wrap: balance;
+    color: var(--main-text-color);
+    background-color: var(--main-background-color);
 }
 
 #logoDarkMode {
@@ -27,7 +31,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
+    :root {
         --main-text-color: #ffffff;
         --main-background-color: #004d4d;
         --article-background-color: #016d6d;
