@@ -49,10 +49,7 @@ body {
 }
 
 h1 {
-    img {
-        display: block;
-        margin: 0 auto 1.5em;
-    }
+    margin: 0 auto 1.5em;
 }
 
 input {
@@ -129,10 +126,8 @@ svg {
     }
 
     h1 {
-        img {
-            width: 80%;
-            margin-bottom: 2em;
-        }
+        width: 80%;
+        margin-bottom: 2em;
     }
 
     input {
@@ -159,10 +154,8 @@ svg {
     }
 
     h1 {
-        img {
-            width: 50%;
-            margin-bottom: 2.5em;
-        }
+        width: 50%;
+        margin-bottom: 2.5em;
     }
 
     input {
