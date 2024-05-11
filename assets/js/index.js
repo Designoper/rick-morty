@@ -41,7 +41,7 @@ const printCharacters = ({ characters }) => {
 		const CHARACTER_CARDS = characters.map(character =>
 			`<article>
 				<h2>${character.name}</h2>
-				<img src="${character.image}" alt="Character ${character.name}">
+				<img src="${character.image}" alt="Character ${character.name}" loading="lazy">
 				<ul>
 					<li><strong>Species:</strong> ${character.species}</li>
 					${character.type ? `<li><strong>Type:</strong> ${character.type}</li>` : ''}
