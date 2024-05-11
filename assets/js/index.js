@@ -59,7 +59,7 @@ const printCharacters = ({ characters }) => {
 	catch {
 		ERROR_MESSAGE.textContent = 'No characters found.';
 		NEXT_PAGE_BUTTON.style.display = 'none';
-		console.warn(`No search results found`);
+		console.warn(`No search results found.`);
 	}
 }
 
