@@ -1,7 +1,7 @@
 const API_ENDPOINT = `https://rickandmortyapi.com/api/character/?name=`;
-const RESPONSE_CONTAINER = document.getElementById('fetchResponse');
-const ERROR_MESSAGE = document.getElementById('errorMessage');
 const SEARCH_BAR = document.getElementById('searchBar');
+const SEARCH_OUTPUT = document.getElementById('searchOutput');
+const ERROR_MESSAGE = document.getElementById('errorMessage');
 const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
 
 const mainFunction = async (url) => {
@@ -53,7 +53,7 @@ const printCharacters = ({ characters }) => {
 			</article>`
 		).join('');
 
-		RESPONSE_CONTAINER.insertAdjacentHTML("beforeend", CHARACTER_CARDS);
+		SEARCH_OUTPUT.insertAdjacentHTML("beforeend", CHARACTER_CARDS);
 	}
 
 	catch {
@@ -70,7 +70,7 @@ const updateButton = ({ page = false }) => {
 
 const clean = () => {
 	ERROR_MESSAGE.innerHTML = '';
-	RESPONSE_CONTAINER.innerHTML = '';
+	SEARCH_OUTPUT.innerHTML = '';
 }
 
 SEARCH_BAR.oninput = () => {
