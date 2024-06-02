@@ -6,9 +6,9 @@ const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
 
 const mainFunction = async (url) => {
 	const RESPONSE = await fetchResource(url);
-	const PARSED_JSON = await parseJson(RESPONSE);
-	printCharacters(PARSED_JSON);
-	updateButton(PARSED_JSON);
+	const DATA = await parseJson(RESPONSE);
+	printCharacters(DATA);
+	updateButton(DATA);
 }
 
 const fetchResource = async (url) => {
