@@ -5,33 +5,21 @@ const ERROR_MESSAGE = document.getElementById('errorMessage');
 const NEXT_PAGE_BUTTON = document.getElementById('nextPageButton');
 
 const mainFunction = async (url) => {
-	const RESPONSE = await fetchResource(url);
-	const DATA = await parseJson(RESPONSE);
+	const DATA = await fetchAndParse(url);
 	printCharacters(DATA);
 	updateButton(DATA);
 }
 
-const fetchResource = async (url) => {
+const fetchAndParse = async (url) => {
 	try {
 		const RESPONSE = await fetch(url);
-		return RESPONSE;
-	}
-
-	catch {
-		const CONSOLE_MESSAGE = `fetchResource function has failed.`;
-		ERROR_MESSAGE.textContent = `Connection to the Rick and Morty API has failed.`;
-		throw (console.warn(CONSOLE_MESSAGE));
-	}
-}
-
-const parseJson = async (response) => {
-	try {
-		const DATA = await response.json();
+		const DATA = await RESPONSE.json();
 		return DATA;
 	}
 
 	catch {
-		const CONSOLE_MESSAGE = `parseJson function has failed.`;
+		const CONSOLE_MESSAGE = `fetchAndParse function has failed.`;
+		ERROR_MESSAGE.textContent = `Connection to the Rick and Morty API has failed.`;
 		throw (console.warn(CONSOLE_MESSAGE));
 	}
 }
