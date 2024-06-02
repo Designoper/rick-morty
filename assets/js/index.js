@@ -26,8 +26,8 @@ const fetchResource = async (url) => {
 
 const parseJson = async (response) => {
 	try {
-		const { results: characters, info: page } = await response.json();
-		return { characters, page }
+		const DATA = await response.json();
+		return DATA;
 	}
 
 	catch {
@@ -36,9 +36,9 @@ const parseJson = async (response) => {
 	}
 }
 
-const printCharacters = ({ characters }) => {
+const printCharacters = (data) => {
 	try {
-		const CHARACTER_CARDS = characters.map(character =>
+		const CHARACTER_CARDS = data.results.map(character =>
 			`<article>
 				<h2>${character.name}</h2>
 				<img src="${character.image}" alt="Character ${character.name}">
@@ -63,9 +63,9 @@ const printCharacters = ({ characters }) => {
 	}
 }
 
-const updateButton = ({ page = false }) => {
-	NEXT_PAGE_BUTTON.style.display = page.next ? 'block' : 'none';
-	NEXT_PAGE_BUTTON.onclick = () => mainFunction(page.next);
+const updateButton = (data) => {
+	NEXT_PAGE_BUTTON.style.display = data.info.next ? 'block' : 'none';
+	NEXT_PAGE_BUTTON.onclick = () => mainFunction(data.info.next);
 }
 
 const clean = () => {
