@@ -56,13 +56,13 @@ const updateButton = (data) => {
 	NEXT_PAGE_BUTTON.onclick = () => mainFunction(data.info.next);
 }
 
-const clean = () => {
+const cleanSearchResults = () => {
 	ERROR_MESSAGE.innerHTML = '';
 	SEARCH_OUTPUT.innerHTML = '';
 }
 
 SEARCH_BAR.oninput = () => {
-	clean();
+	cleanSearchResults();
 	mainFunction(`${API_ENDPOINT}${SEARCH_BAR.value}`);
 }
 
