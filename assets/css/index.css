@@ -66,19 +66,24 @@ input {
 
 #searchOutput {
     display: grid;
+    align-items:start;
     row-gap: 3em;
 }
 
 article {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
     border-radius: 1.5em;
+    height: 100%;
+    /* overflow: hidden; */
     background-color: var(--article-background-color);
-    overflow: hidden;
 
     img {
-        display: block;
+        justify-self: center;
+        align-self: center;
         width: 60%;
         border-radius: 50%;
-        margin: 1.25em auto;
     }
 }
 
@@ -91,8 +96,8 @@ h2 {
 }
 
 ul {
-    height: 100%;
     padding: 1.25em;
+    height: 100%;
     color: var(--li-color);
     background-color: var(--h2-ul-background-color);
 }
